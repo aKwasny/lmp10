@@ -11,8 +11,26 @@ void czytaj () {
 	
 }
 
+void sum_a0 () {
+	j = 0;
+	a0 = 0;
+	double sum = 0;
+	for (j=1; j<n, j++) {
+		sum += ;
+	}
+}
 
 int main () {
+	double a0
+	double ai;
+	double bi;
+	double n;	/* liczba punktów */
+	double m;	/* stopień wielomianu trygonometrycznego; musi spełniać warunek n>2m+1 */
+	double x;
+	double y;
+	int i;
+	int j;
+
 	czytaj ();
 	
 }
