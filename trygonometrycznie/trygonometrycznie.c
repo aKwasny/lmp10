@@ -24,7 +24,7 @@ void drukuj_tablice (float tablica[], int n) {
 }
 
 
-float licz_a0 (float tablica[], int n) { /*TODO: Poprawić liczenie współczynnika - zamiast -6,5 ma wychodzić -6,4.*/
+float licz_a0 (float tablica[], int n) {	/* liczenie współczynnika a0 ze średniej arytmetyrcznej ciągu y1, y2, y3 ..., yn; */
 
 	int i = 0;
 	float a0 = 0;
@@ -34,8 +34,6 @@ float licz_a0 (float tablica[], int n) { /*TODO: Poprawić liczenie współczynn
 		suma += tablica [i];
 	}
 	
-	/*suma += 0.100000000000000000000000000000000000000;*/
-
 	a0 = suma/n;
 	
 	printf ("suma = %f\n", suma);
@@ -45,12 +43,12 @@ float licz_a0 (float tablica[], int n) { /*TODO: Poprawić liczenie współczynn
 }
 
 
-float licz_ai (float tablica [], int n, int m, int i) {
+float licz_ai (float tablica [], int n, int m, int i) {	/*liczenie współczynników ai (i=1, 2, 3, ..., m) ze średniej arytmetycznej ciągu yj*cos(2*Pi*j*i/n) dla j=(1, 2, ..., n) */
 	
 	float a [1024];
 	int j = 0;
 	float wyn = 0;
-	FILE *fwyrz1 = fopen ("dane_ai", "w");
+	FILE *fwyrz1 = fopen ("dane_ai", "w");	
 
 	i = 0;
 
@@ -70,7 +68,7 @@ float licz_ai (float tablica [], int n, int m, int i) {
 		
 }
 
-float licz_bi (float tablica [], int n, int m, int i) {
+float licz_bi (float tablica [], int n, int m, int i) {	/*liczenie współczynników bi (i=1, 2, 3, ..., m) ze średniej arytmetycznej ciągu yj*sin(2*Pi*j*i/n) dla j=(1, 2, ..., n) */
 
 	float b [1024];
 	int j = 0;
@@ -93,7 +91,7 @@ float licz_bi (float tablica [], int n, int m, int i) {
 	return b[i];
 }
 
-/*float licz_y (float tablica [], int m, int n, int i, float &a0, float &a[], float &b[]) {
+/*float licz_y (float tablica [], int m, int n, int i, float a0, float a[], float b[]) {
 	
 	float y [1024];
 	FILE *fwyrz3 = fopen ("dane_y", "w");
@@ -173,7 +171,7 @@ int main (int argc, char * argv[]) {
 
 	licz_bi (tablica, n, m, i);
 
-/*	licz_y (tablica, n, m, i, a0, a[i], b[i]);*/
+/*	licz_y (tablica, n, m, i, &a0, &a[i], &b[i]); */
 
    return EXIT_SUCCESS;
 }
