@@ -30,9 +30,11 @@ float licz_a0 (float tablica[], int n) { /*TODO: Poprawić liczenie współczynn
 	float a0 = 0;
 	float suma = 0;
 	
-	for (i = 1; i < n; i++) {
+	for (i = 0; i < n; i++) {
 		suma += tablica [i];
 	}
+	
+	/*suma += 0.100000000000000000000000000000000000000;*/
 
 	a0 = suma/n;
 	
@@ -119,9 +121,11 @@ float licz_bi (float tablica [], int n, int m, int i) {
 	int	i, j, k;
 	int	nb = pts->n - 3 > 10 ? 10 : pts->n - 3;
 	char *nbEnv= getenv( "APPROX_BASE_SIZE" );
+
 	if( nbEnv != NULL && atoi( nbEnv ) > 0 ) {
 		nb = atoi( nbEnv );
 	}
+
 	eqs = make_matrix(nb, nb + 1);
 } */
 
@@ -132,15 +136,13 @@ int main (int argc, char * argv[]) {
 	int n = 0;	/* liczba punktów, czyli też elementów w tablicy */
 	int m = 0;	/* stopień wielomianu trygonometrycznego; musi spełniać warunek n>2m+1*/
 	int i;
-
+	float tablica [1024];
 
 	FILE *in = fopen( argv[1], "r" );
 	if (in == NULL) {
 		printf ("Podaj proszę plik do wczytania przy uruchamianiu programu.\nUżycie: ./a.out <nazwa-pliku>\n");
 		return -1;
 	}
-
-	float tablica [1024];
 
 	i = 0;
 
