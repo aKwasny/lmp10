@@ -6,8 +6,11 @@
 #include <stdlib.h>
 
 
+
+/*od aKwasny: zmienione teksty i nazwy niektórych zmiennych na język polski, ponieważ zwiększało to komfort mojej pracy */
+
 char *uzycie =
-		"Użycie: %s -p plik-z-punktami -g plik-gnuplot (wyjście) -o od_x -d do_x -n n_punktów -m m_numer \n"
+		"Użycie: %s -p plik-z-punktami -g plik-gnuplot (wyjście) -o od_x -d do_x -n n_punktów\n"
 		"            Jeżeli plik z punktami został podany to\n"
 		"               czyta z niego\n"
 		"               - liczba punktów powinna wynosić >= 4\n"
@@ -26,19 +29,19 @@ int main (int argc, char **argv) {
 	char *gnuplot = NULL;
 	double odX = 0;
 	double doX = 0;
-	int n = 100;
-	int m = 1;
+	int n = 100; 	/* domyślne ustawienie potrzebne do działania programu */
+	/*int m = 1; 	 domyślne ustawienie potrzebne do działania programu */ 
 	double *dane_a = NULL;
 	double *dane_b = NULL;
 
 	points_t pts;
 	pts.n = 0;
 
-	if (argv[0] == NULL) {
+	if (argv[1] == NULL) {
 		fprintf (stderr, uzycie, argv[0]);
 	}
 
-	while ((opt = getopt (argc, argv, "p:s:g:f:t:n:m:")) != -1) { 		/* opcje działanie + zapisywanie wyborów użytkownika */
+	while ((opt = getopt (argc, argv, "p:g:o:d:n:m:")) != -1) { 		/* opcje działanie + zapisywanie wyborów użytkownika */
 		switch (opt) {
 		case 'p':
 			in = optarg;
@@ -55,9 +58,9 @@ int main (int argc, char **argv) {
 		case 'n':
 			n = atoi (optarg);
 			break;
-		case 'm':
+		/*case 'm':
 			m = atoi (optarg);
-			break;
+			break;*/
 		default:
 			fprintf (stderr, uzycie, argv[0]);
 			return EXIT_FAILURE;
@@ -96,7 +99,7 @@ int main (int argc, char **argv) {
 
 			FILE *plik_gnuplota = fopen (gnuplot, "w");
 
-			double przetworzony_zakres;
+			double przetworzony_zakres;					/*wzięte z oryginalnej wersji, delikatnie zmienione; dobrze działa z nową wersją */
 			int i = 0;
 
 			przetworzony_zakres = (doX-odX)/(n-1);			
@@ -111,7 +114,6 @@ int main (int argc, char **argv) {
 				}
 			}	
 			
-
 			if (plik_gnuplota == NULL) {
 				printf ("Nie można stworzyć gnuplot'owego pliku: %s\n\n", gnuplot);
 				return EXIT_FAILURE;
@@ -121,8 +123,10 @@ int main (int argc, char **argv) {
 			dane_b = licz_b(pts);
 
 			for (i = 0; i < n; i++) {
-				fprintf (plik_gnuplota, "%f\t%f\n", (odX+i*przetworzony_zakres), y(pts, odX+i*przetworzony_zakres, dane_a, dane_b, m));
+				fprintf (plik_gnuplota, "%f\t%f\n", (odX+i*przetworzony_zakres), y(pts, odX + i*przetworzony_zakres, dane_a, dane_b));
 			}
+			
+			fclose (plik_gnuplota);
 			
 		}
 	}

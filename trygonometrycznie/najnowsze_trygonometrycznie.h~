@@ -1,7 +1,7 @@
 #ifndef NAJNOWSZE_TRYGONOMETRYCZNIE_H_
 #define NAJNOWSZE_TRYGONOMETRYCZNIE_H_
 
-/*int maxm (int n);*/
+int maxm (int n);
 
 double *licz_a (points_t pts);
 

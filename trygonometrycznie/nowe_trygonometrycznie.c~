@@ -37,8 +37,6 @@ int main (int argc, char * argv[]) {
 	double y [1024];
 	int j = 0;
 	double wyn = 0;
-	double *x = pts->x;
-	double *y = pts->y;
 	
 	FILE *fwyrz1 = fopen ("wyniki", "w");
 	
