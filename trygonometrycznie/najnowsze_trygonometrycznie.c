@@ -25,7 +25,6 @@ double *licz_a(points_t pts) {
 	int i;
 	double wyn;
 	double *a = NULL;
-	double *t;
 	int m = 0;
 
 
@@ -43,7 +42,7 @@ double *licz_a(points_t pts) {
 		wyn = 0;
 
 		if(i == 0) {
-			a = malloc(1024*sizeof(double));	/* ustalanie wartości a0 */
+			a = malloc(m*sizeof(double));	/* ustalanie wartości a0 */
 			for(j = 1; j <= n; j++) {
 				wyn += pts.y[j - 1] ;
 			}
@@ -52,10 +51,6 @@ double *licz_a(points_t pts) {
 
 			a[i] = wyn;
 		} else {
-			t = realloc( a, (i+1) * 1024 * sizeof(double));
-			if(t != NULL) {
-				a = t;
-			}
 
 			for(j = 1; j <= n; j++) {
 				wyn += pts.y[j - 1] * cos((2 * PI * i * j)/n);
@@ -76,7 +71,6 @@ double *licz_b(points_t pts) {
 	int i;
 	double wyn;
 	double *b = NULL;
-	double *u;
 	int m = 0;
 	
 
@@ -94,7 +88,7 @@ double *licz_b(points_t pts) {
 		wyn = 0;				/* konieczne wyzerowanie wartości wyn do poprawnego obliczania współczynnika */
 
 		if(i == 0) {
-			b = malloc(1024*sizeof(double));
+			b = malloc(m*sizeof(double));
 			for(j = 1; j <= n; j++) {
 				wyn += pts.y[j - 1];
 			}
@@ -104,10 +98,7 @@ double *licz_b(points_t pts) {
 			b[i] = wyn;
 
 		} else {
-			u = realloc( b, (i+1) * 1024 * sizeof(double));
-			if(u != NULL) {
-				b = u;
-			}
+			
 			for(j = 1; j <= n; j++) {
 				wyn += pts.y[j - 1] * sin((2 * PI * i * j)/n);
 			}
