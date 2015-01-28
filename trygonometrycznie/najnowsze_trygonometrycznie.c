@@ -128,7 +128,7 @@ double y(points_t pts, double x, double *licz_a, double *licz_b) {			/*trzeba wy
 	y += licz_a[0]; /*dodanie do y wartości a0 */
 
 	for(i = 1; i <= m; i++) {
-		y += (licz_a[i] * (cos(2*PI*i/n)*x)) + (licz_b[i] * (sin(2*PI*i/n)*x));
+		y += (licz_a[i] * (cos(2*PI*i/n*x))) + (licz_b[i] * (sin(2*PI*i/n*x)));
 	}
 
 	return y;
