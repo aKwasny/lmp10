@@ -41,7 +41,7 @@ int main (int argc, char **argv) {
 		fprintf (stderr, uzycie, argv[0]);
 	}
 
-	while ((opt = getopt (argc, argv, "p:g:o:d:n:m:")) != -1) { 		/* opcje działanie + zapisywanie wyborów użytkownika */
+	while ((opt = getopt (argc, argv, "p:g:o:d:n:")) != -1) { 		/* opcje działanie + zapisywanie wyborów użytkownika */
 		switch (opt) {
 		case 'p':
 			in = optarg;
@@ -58,9 +58,6 @@ int main (int argc, char **argv) {
 		case 'n':
 			n = atoi (optarg);
 			break;
-		/*case 'm':
-			m = atoi (optarg);
-			break;*/
 		default:
 			fprintf (stderr, uzycie, argv[0]);
 			return EXIT_FAILURE;
@@ -127,7 +124,6 @@ int main (int argc, char **argv) {
 			}
 			
 			fclose (plik_gnuplota);
-			
 		}
 	}
 	return EXIT_SUCCESS;
