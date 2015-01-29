@@ -23,13 +23,12 @@ double *licz_wartosci_wspolczynnikow_ai(points_t pts) {
 		m = ((n-1)/2) - 1;
 	}
 
-
 	for(i = 0; i < m; i++) {
 
 		wyn = 0;
 
 		if(i == 0) {
-			a = malloc(m*sizeof(double));	/* ustalanie wartości a0 */
+			a = malloc(m * sizeof(double));	/* ustalanie wartości a0 */
 			for(j = 1; j <= n; j++) {
 				wyn += pts.y[j - 1] ;
 			}
@@ -50,6 +49,8 @@ double *licz_wartosci_wspolczynnikow_ai(points_t pts) {
 	}
 
 	return a;
+
+	free (a);
 }
 
 double *licz_wartosci_wspolczynnikow_bi(points_t pts) {
@@ -73,7 +74,7 @@ double *licz_wartosci_wspolczynnikow_bi(points_t pts) {
 		wyn = 0;				/* konieczne wyzerowanie wartości wyn do poprawnego obliczania współczynnika */
 
 		if(i == 0) {
-			b = malloc(m*sizeof(double));
+			b = malloc(m * sizeof(double));
 			for(j = 1; j <= n; j++) {
 				wyn += pts.y[j - 1];
 			}
@@ -96,6 +97,8 @@ double *licz_wartosci_wspolczynnikow_bi(points_t pts) {
 	}
 
 	return b;
+
+	free (b);
 }
 
 double licz_wartosci_y(points_t pts, double x, double *licz_wartosci_wspolczynnikow_ai, double *licz_wartosci_wspolczynnikow_bi) {	/*trzeba wywołać razem z wartościami x, inaczej wyniki będą złe */

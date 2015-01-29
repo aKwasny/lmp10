@@ -1,0 +1,7 @@
+Uwaga!
+
+Kompilowanie tego programu za pomocą Makefile ma 2 opcje:
+
+	1) Wpisanie w linię poleceń samego polecenia "make" spowoduje skompilowanie programu tak, żeby aproksymował dane za pomocą metody średniokwadratowej.
+
+	2) Wpisanie w linię poleceń polecenia "make aprox_tryg" spoowduje skompilowanie programu tak, żeby aproksymował dane za pomocą funkcji trygonometrycznych.
