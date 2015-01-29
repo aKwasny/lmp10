@@ -1,17 +1,10 @@
-#ifndef TRYGONOMETRYCZNIE_H
-#define TRYGONOMETRYCZNIE_H
+#ifndef NAJNOWSZE_TRYGONOMETRYCZNIE_H_
+#define NAJNOWSZE_TRYGONOMETRYCZNIE_H_
 
-#include <stdio.h>
-#include <math.h>
+double *licz_a (points_t pts);
 
-double licz_a0 (double tablica [], int n);
+double *licz_b (points_t pts);
 
-double licz_ai (double tablica [], int n, int m, int i);
-
-double licz_bi (double tablica [], int n, int m, int i);
-
-/*void make_spl (points_t * pts, spline_t * spl); */
-
-/*double licz_y (double tablica [], int n, int m, int i, double a0, double a[], double b[]);*/
+double y (points_t pts, double x, double *licz_a, double *licz_b);
 
 #endif
