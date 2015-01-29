@@ -1,5 +1,5 @@
 #include "points.h"
-#include "trygonometrycznie/najnowsze_trygonometrycznie.h"
+#include "trygonometrycznie/trygonometrycznie.h"
 
 #include <getopt.h>
 #include <stdio.h>
@@ -10,7 +10,7 @@
 /*od aKwasny: zmienione teksty i nazwy niektórych zmiennych na język polski, ponieważ zwiększało to komfort mojej pracy */
 
 char *uzycie =
-		"Użycie: %s -p plik-z-punktami -g plik-gnuplot (wyjście) -o od_x -d do_x -n n_punktów\n"
+		"Użycie: (opcjonalnie APROX_BASE_SIZE=m) %s -p plik-z-punktami -g plik-gnuplot (wyjście) -o od_x -d do_x -n n_punktów\n"
 		"            Jeżeli plik z punktami został podany to\n"
 		"               czyta z niego\n"
 		"               - liczba punktów powinna wynosić >= 4\n"
@@ -21,6 +21,8 @@ char *uzycie =
 		"               - do_x domyślnie ustawiona w wartościach x jako ostatnia dana\n"
 		"               - n-punktów domyślnie 100\n"
 		"               - n-punktów musi być > 1\n"
+		"            Jeżeli zdefiniowano m w APROX_BASE_SIZE to taka będzie liczba funkcji bazowych.\n"
+		"               Domyślnie m jest definiowane w programie na podstawie algorytmu m = ((n-1)/2) - 1 (gdzie n - liczba punktów w pliku p).\n"
 		"            endif\n";
 
 int main (int argc, char **argv) {
@@ -116,11 +118,11 @@ int main (int argc, char **argv) {
 				return EXIT_FAILURE;
 			}
 	
-			dane_a = licz_a(pts);
-			dane_b = licz_b(pts);
+			dane_a = licz_wartosci_wspolczynnikow_ai(pts);
+			dane_b = licz_wartosci_wspolczynnikow_bi(pts);
 
 			for (i = 0; i < n; i++) {
-				fprintf (plik_gnuplota, "%f\t%f\n", (odX+i*przetworzony_zakres), y(pts, odX + i*przetworzony_zakres, dane_a, dane_b));
+				fprintf (plik_gnuplota, "%f\t%f\n", (odX+i*przetworzony_zakres), licz_wartosci_y(pts, odX + i*przetworzony_zakres, dane_a, dane_b));
 			}
 			
 			fclose (plik_gnuplota);
