@@ -15,15 +15,15 @@ read_pts_failed (FILE * inf, points_t * pts)
   double x, y;
 
   if (pts->n == 0) {
-    pts->x = malloc (100 * sizeof *pts->x);
+    pts->x = malloc (10000 * sizeof *pts->x);
     if (pts->x == NULL)
       return 1;
-    pts->y = malloc (100 * sizeof *pts->y);
+    pts->y = malloc (10000 * sizeof *pts->y);
     if (pts->y == NULL) {
       free (pts->x);
       return 1;
     }
-    size = 100;
+    size = 10000;
   }
   else
     size = pts->n;

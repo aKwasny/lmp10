@@ -49,8 +49,6 @@ double *licz_wartosci_wspolczynnikow_ai(points_t pts) {
 	}
 
 	return a;
-
-	free (a);
 }
 
 double *licz_wartosci_wspolczynnikow_bi(points_t pts) {
@@ -97,8 +95,6 @@ double *licz_wartosci_wspolczynnikow_bi(points_t pts) {
 	}
 
 	return b;
-
-	free (b);
 }
 
 double licz_wartosci_y(points_t pts, double x, double *licz_wartosci_wspolczynnikow_ai, double *licz_wartosci_wspolczynnikow_bi) {	/*trzeba wywołać razem z wartościami x, inaczej wyniki będą złe */

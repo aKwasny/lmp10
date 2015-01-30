@@ -121,11 +121,15 @@ int main (int argc, char **argv) {
 			dane_b = licz_wartosci_wspolczynnikow_bi(pts);
 
 			for (i = 0; i < n; i++) {
-				fprintf (plik_gnuplota, "%f\t%f\n", (odX+i*przetworzony_zakres), licz_wartosci_y(pts, odX + i*przetworzony_zakres, dane_a, dane_b));
+				fprintf (plik_gnuplota, "%f\t%f\n", (odX+i*przetworzony_zakres), licz_wartosci_y(pts, odX + i*przetworzony_zakres, dane_a, dane_b)); /*pisanie do wyznaczonego pliku*/
 			}
 			
 			fclose (plik_gnuplota);
 		}
 	}
+
+	free (pts.x);
+	free (pts.y);
+		
 	return EXIT_SUCCESS;
 }
